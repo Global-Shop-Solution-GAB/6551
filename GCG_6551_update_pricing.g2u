@@ -1,0 +1,569 @@
+﻿Program.Sub.ScreenSU.Start
+Gui.Form..Create(BaseForm)
+Gui.Form..Caption("List Price Adjuster")
+Gui.Form..Size(935,653)
+Gui.Form..MinX(0)
+Gui.Form..MinY(0)
+Gui.Form..Position(0,0)
+Gui.Form..AlwaysOnTop(False)
+Gui.Form..FontName("Tahoma")
+Gui.Form..FontSize(8.25)
+Gui.Form..ControlBox(True)
+Gui.Form..MaxButton(False)
+Gui.Form..MinButton(True)
+Gui.Form..MousePointer(0)
+Gui.Form..Moveable(True)
+Gui.Form..Sizeable(False)
+Gui.Form..ShowInTaskBar(True)
+Gui.Form..TitleBar(True)
+Gui.Form..Event(UnLoad,FORMUNLOAD)
+Gui.Form.GsGCProdLine.Create(GsGridControl)
+Gui.Form.GsGCProdLine.Enabled(True)
+Gui.Form.GsGCProdLine.Visible(True)
+Gui.Form.GsGCProdLine.Zorder(0)
+Gui.Form.GsGCProdLine.Size(259,470)
+Gui.Form.GsGCProdLine.Position(13,31)
+Gui.Form.GsGCProdLine.Event(RowClick,GsGCProdLine_RowClick)
+Gui.Form.GsGCSortCode.Create(GsGridControl)
+Gui.Form.GsGCSortCode.Enabled(True)
+Gui.Form.GsGCSortCode.Visible(True)
+Gui.Form.GsGCSortCode.Zorder(0)
+Gui.Form.GsGCSortCode.Size(377,470)
+Gui.Form.GsGCSortCode.Position(279,31)
+Gui.Form.GsGCSortCode.Event(RowClick,GsGCSortCode_RowClick)
+Gui.Form.GsGCAltPrice.Create(GsGridControl)
+Gui.Form.GsGCAltPrice.Enabled(True)
+Gui.Form.GsGCAltPrice.Visible(True)
+Gui.Form.GsGCAltPrice.Zorder(0)
+Gui.Form.GsGCAltPrice.Size(265,470)
+Gui.Form.GsGCAltPrice.Position(664,31)
+Gui.Form.GsGCAltPrice.Event(RowClick,GsGCAltPrice_RowClick)
+Gui.Form.lbl1.Create(Label,"Product Line",True,59,13,0,17,10,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lbl1.BorderStyle(0)
+Gui.Form.lbl2.Create(Label,"Sort Code",True,48,13,0,280,10,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lbl2.BorderStyle(0)
+Gui.Form.lbl3.Create(Label,"Alt Price Codes",True,72,13,0,667,10,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lbl3.BorderStyle(0)
+Gui.Form.chkProdLines.Create(CheckBox)
+Gui.Form.chkProdLines.Enabled(True)
+Gui.Form.chkProdLines.Visible(True)
+Gui.Form.chkProdLines.Zorder(0)
+Gui.Form.chkProdLines.Size(116,20)
+Gui.Form.chkProdLines.Position(14,509)
+Gui.Form.chkProdLines.Caption("All Product Lines")
+Gui.Form.chkProdLines.FontName("Tahoma")
+Gui.Form.chkProdLines.FontSize(8.25)
+Gui.Form.chkProdLines.Event(Click,chkProdLines_Click)
+Gui.Form.chkSortCodes.Create(CheckBox)
+Gui.Form.chkSortCodes.Enabled(True)
+Gui.Form.chkSortCodes.Visible(True)
+Gui.Form.chkSortCodes.Zorder(0)
+Gui.Form.chkSortCodes.Size(117,20)
+Gui.Form.chkSortCodes.Position(279,510)
+Gui.Form.chkSortCodes.Caption("All Sort Codes")
+Gui.Form.chkSortCodes.FontName("Tahoma")
+Gui.Form.chkSortCodes.FontSize(8.25)
+Gui.Form.chkSortCodes.Event(Click,chkSortCodes_Click)
+Gui.Form.chkAltPrices.Create(CheckBox)
+Gui.Form.chkAltPrices.Enabled(True)
+Gui.Form.chkAltPrices.Visible(True)
+Gui.Form.chkAltPrices.Zorder(0)
+Gui.Form.chkAltPrices.Size(137,20)
+Gui.Form.chkAltPrices.Position(663,507)
+Gui.Form.chkAltPrices.Caption("All Price Codes")
+Gui.Form.chkAltPrices.FontName("Tahoma")
+Gui.Form.chkAltPrices.FontSize(8.25)
+Gui.Form.chkAltPrices.Event(Click,chkAltPrices_Click)
+Gui.Form.txtPercent.Create(TextBox,"",True,100,20,0,424,548,True,0,"Tahoma",8.25,,1)
+Gui.Form.txtPercent.NumericOnly(1)
+Gui.Form.txtPercent.ToolTip("Numeric Value only:  10 = 10 Percent")
+Gui.Form.lbl4.Create(Label,"Percent to Increase",True,95,13,0,320,552,True,0,"Tahoma",8.25,,0,0)
+Gui.Form.lbl4.BorderStyle(0)
+Gui.Form.lbl4.Event(Click,lbl4_Click)
+Gui.Form.cmdPost.Create(Button)
+Gui.Form.cmdPost.Enabled(True)
+Gui.Form.cmdPost.Visible(True)
+Gui.Form.cmdPost.Zorder(0)
+Gui.Form.cmdPost.Size(103,30)
+Gui.Form.cmdPost.Position(384,583)
+Gui.Form.cmdPost.Caption("Execute")
+Gui.Form.cmdPost.FontName("Tahoma")
+Gui.Form.cmdPost.FontSize(8.25)
+Gui.Form.cmdPost.Event(Click,cmdPost_Click)
+Gui.Form.cmdHelp.Create(Button)
+Gui.Form.cmdHelp.Enabled(True)
+Gui.Form.cmdHelp.Visible(True)
+Gui.Form.cmdHelp.Zorder(0)
+Gui.Form.cmdHelp.Size(53,19)
+Gui.Form.cmdHelp.Position(529,548)
+Gui.Form.cmdHelp.Caption("Help ?")
+Gui.Form.cmdHelp.FontName("Tahoma")
+Gui.Form.cmdHelp.FontSize(8.25)
+Gui.Form.cmdHelp.Event(Click,cmdHelp_Click)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+Function.Intrinsic.UI.UsePixels ' Allows you to use Pixels instead of Twips throughout
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+
+f.Intrinsic.Control.CallSub(getData)
+f.Intrinsic.Control.CallSub(formatgrids)
+
+gui.Form..Visible(True)
+
+
+
+f.Intrinsic.Control.catch
+f.Intrinsic.Control.CallSub(catching,"sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+Program.Sub.Catching.Start
+v.Local.sError.declare(string)
+F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}","GCG_6551_update_pricing.g2u",V.Ambient.NewLine,v.Args.sub,V.Args.errorno,V.args.errordesc,V.Local.sError)
+f.Intrinsic.UI.Msgbox(v.Local.sError)
+F.Intrinsic.Control.CallSub(FORMUNLOAD)
+Program.Sub.Catching.End
+
+Program.Sub.FORMUNLOAD.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+F.Intrinsic.Control.If(V.ODBC.con.exists)
+	f.ODBC.Connection!con.Close
+F.Intrinsic.Control.EndIf
+
+f.Intrinsic.Control.End
+
+f.Intrinsic.Control.catch
+f.Intrinsic.Control.CallSub(catching,"sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.FORMUNLOAD.End
+
+Program.Sub.getData.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+f.ODBC.Connection!con.opencompanyconnection
+'get product lines
+f.Data.Datatable.CreateFromSQL("Products","con","select cast(0 as bit) as selected, product_line, product_line_name from v_product_line",True)
+'get alt price codes that are currently in use " code > ''"
+f.Data.Datatable.CreateFromSQL("PriceCode","con","select cast(0 as bit) as selected, keyfld, code, descr as description from v_inv_alt_code where code > ''",True)
+'get inventory sort codes
+f.Data.Datatable.CreateFromSQL("Sorts","con","select cast(0 as bit) as selected, sort_code, descr from v_inv_sort",True)
+
+f.Intrinsic.Control.If(v.DataTable.dtProducts.Exists,=,False)
+	f.Data.Datatable.Clone("Products","dtProducts",True)
+	f.Data.Datatable.Merge("Products","dtProducts",False,4)
+	f.Data.Datatable.Close("Products")
+	f.Data.Datatable.Clone("PriceCode","dtPriceCode",True)
+	f.Data.Datatable.Merge("PriceCode","dtPricecode",False,4)
+	f.Data.Datatable.Close("PriceCode")
+	f.Data.Datatable.Clone("Sorts","dtSorts",True)
+	f.Data.Datatable.Merge("Sorts","dtSorts",False,4)
+	f.Data.Datatable.Close("Sorts")
+f.Intrinsic.Control.Else
+	f.Data.Datatable.DeleteRow("dtProducts")
+	f.Data.Datatable.Merge("Products","dtProducts",False,4)
+	f.Data.Datatable.Close("Products")
+	f.Data.Datatable.DeleteRow("dtPriceCode")
+	f.Data.Datatable.Merge("PriceCode","dtPriceCode",False,4)
+	f.Data.Datatable.Close("PriceCode")
+	f.Data.Datatable.DeleteRow("dtSorts")	
+	f.Data.Datatable.Merge("Sorts","dtSorts",False,4)
+	f.Data.Datatable.Close("Sorts")
+f.Intrinsic.Control.EndIf
+
+f.ODBC.Connection!con.Close
+
+f.Intrinsic.Control.catch
+f.Intrinsic.Control.CallSub(catching,"sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.getData.End
+
+Program.Sub.formatgrids.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+'create views
+f.Data.DataView.Create("dtProducts","dvProducts",22)
+f.Data.DataView.Create("dtPriceCode","dvPriceCode",22)
+f.Data.DataView.Create("dtSorts","dvSorts",22)
+
+gui.Form.GsGCAltPrice.AddGridviewFromDataview("gvPriceCode","dtPriceCode","dvPriceCode")
+gui.Form.GsGCProdLine.AddGridviewFromDataview("gvProducts","dtProducts","dvProducts")
+gui.Form.GsGCSortCode.AddGridviewFromDataview("gvSorts","dtSorts","dvSorts")
+
+'PriceCode gridview
+gui.Form.GsGCAltPrice.SetGridviewProperty("gvPriceCode",v.Enum.GridViewPropertyNames!ShowGroupPanel,False)
+gui.Form.GsGCAltPrice.SetGridviewProperty("gvPriceCode",v.Enum.GridViewPropertyNames!ColumnAutoWidth,False)
+'h font
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","selected",v.Enum.ColumnPropertyNames!HeaderFontBold,True)
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","keyfld",v.Enum.ColumnPropertyNames!HeaderFontBold,True)
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","code",v.Enum.ColumnPropertyNames!HeaderFontBold,True)
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","description",v.Enum.ColumnPropertyNames!HeaderFontBold,True)
+'edit
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","selected",v.Enum.ColumnPropertyNames!AllowEdit,False)
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","keyfld",v.Enum.ColumnPropertyNames!AllowEdit,False)
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","code",v.Enum.ColumnPropertyNames!AllowEdit,False)
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","description",v.Enum.ColumnPropertyNames!AllowEdit,False)
+'readonly
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","selected",v.Enum.ColumnPropertyNames!ReadOnly,True)
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","keyfld",v.Enum.ColumnPropertyNames!ReadOnly,True)
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","code",v.Enum.ColumnPropertyNames!ReadOnly,True)
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","description",v.Enum.ColumnPropertyNames!ReadOnly,True)
+'h alignment
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","selected",v.Enum.ColumnPropertyNames!HeaderHAlignment,"Near")
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","keyfld",v.Enum.ColumnPropertyNames!HeaderHAlignment,"Near")
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","code",v.Enum.ColumnPropertyNames!HeaderHAlignment,"Near")
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","description",v.Enum.ColumnPropertyNames!HeaderHAlignment,"Near")
+'visible
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","selected",v.Enum.ColumnPropertyNames!Visible,True)
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","keyfld",v.Enum.ColumnPropertyNames!Visible,False)
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","code",v.Enum.ColumnPropertyNames!Visible,True)
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","description",v.Enum.ColumnPropertyNames!Visible,True)
+'captions
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","selected",v.Enum.ColumnPropertyNames!Caption,"Sel")
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","keyfld",v.Enum.ColumnPropertyNames!Caption,"Key")
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","code",v.Enum.ColumnPropertyNames!Caption,"Code")
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","description",v.Enum.ColumnPropertyNames!Caption,"Descr")
+'column widths
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","selected",v.Enum.ColumnPropertyNames!Width,"35")
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","code",v.Enum.ColumnPropertyNames!Width,"55")
+gui.Form.GsGCAltPrice.SetColumnProperty("gvPriceCode","description",v.Enum.ColumnPropertyNames!Width,"140")
+
+gui.Form.GsGCAltPrice.MainView("gvPriceCode")
+
+'productline gridview
+gui.Form.GsGCProdLine.SetGridviewProperty("gvProducts",v.Enum.GridViewPropertyNames!ShowGroupPanel,False)
+gui.Form.GsGCProdLine.SetGridviewProperty("gvProducts",v.Enum.GridViewPropertyNames!ColumnAutoWidth,False)
+
+'PriceCode gridview
+gui.Form.GsGCProdLine.SetGridviewProperty("gvProducts",v.Enum.GridViewPropertyNames!ShowGroupPanel,False)
+gui.Form.GsGCProdLine.SetGridviewProperty("gvProducts",v.Enum.GridViewPropertyNames!ColumnAutoWidth,False)
+'h font
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","selected",v.Enum.ColumnPropertyNames!HeaderFontBold,True)
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","product_line",v.Enum.ColumnPropertyNames!HeaderFontBold,True)
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","product_line_name",v.Enum.ColumnPropertyNames!HeaderFontBold,True)
+'edit
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","selected",v.Enum.ColumnPropertyNames!AllowEdit,False)
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","product_line",v.Enum.ColumnPropertyNames!AllowEdit,False)
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","product_line_name",v.Enum.ColumnPropertyNames!AllowEdit,False)
+'readonly
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","selected",v.Enum.ColumnPropertyNames!ReadOnly,True)
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","product_line",v.Enum.ColumnPropertyNames!ReadOnly,True)
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","product_line_name",v.Enum.ColumnPropertyNames!ReadOnly,True)
+'h alignment
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","selected",v.Enum.ColumnPropertyNames!HeaderHAlignment,"Near")
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","product_line",v.Enum.ColumnPropertyNames!HeaderHAlignment,"Near")
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","product_line_name",v.Enum.ColumnPropertyNames!HeaderHAlignment,"Near")
+'visible
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","selected",v.Enum.ColumnPropertyNames!Visible,True)
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","product_line",v.Enum.ColumnPropertyNames!Visible,True)
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","product_line_name",v.Enum.ColumnPropertyNames!Visible,True)
+'captions
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","selected",v.Enum.ColumnPropertyNames!Caption,"Sel")
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","product_line",v.Enum.ColumnPropertyNames!Caption,"PL")
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","product_line_name",v.Enum.ColumnPropertyNames!Caption,"Descr")
+'column widths
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","selected",v.Enum.ColumnPropertyNames!Width,"35")
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","product_line",v.Enum.ColumnPropertyNames!Width,"35")
+gui.Form.GsGCProdLine.SetColumnProperty("gvProducts","product_line_name",v.Enum.ColumnPropertyNames!Width,"160")
+
+gui.Form.GsGCProdLine.MainView("gvProducts")
+
+'sortcode gridview
+gui.Form.GsGCSortCode.SetGridviewProperty("gvSorts",v.Enum.GridViewPropertyNames!ColumnAutoWidth,False)
+gui.Form.GsGCSortCode.SetGridviewProperty("gvSorts",v.Enum.GridViewPropertyNames!ShowGroupPanel,False)
+'PriceCode gridview
+gui.Form.GsGCSortCode.SetGridviewProperty("gvSorts",v.Enum.GridViewPropertyNames!ShowGroupPanel,False)
+gui.Form.GsGCSortCode.SetGridviewProperty("gvSorts",v.Enum.GridViewPropertyNames!ColumnAutoWidth,False)
+'h font
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","selected",v.Enum.ColumnPropertyNames!HeaderFontBold,True)
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","sort_code",v.Enum.ColumnPropertyNames!HeaderFontBold,True)
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","descr",v.Enum.ColumnPropertyNames!HeaderFontBold,True)
+'edit
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","selected",v.Enum.ColumnPropertyNames!AllowEdit,False)
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","sort_code",v.Enum.ColumnPropertyNames!AllowEdit,False)
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","descr",v.Enum.ColumnPropertyNames!AllowEdit,False)
+'readonly
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","selected",v.Enum.ColumnPropertyNames!ReadOnly,True)
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","sort_code",v.Enum.ColumnPropertyNames!ReadOnly,True)
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","descr",v.Enum.ColumnPropertyNames!ReadOnly,True)
+'h alignment
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","selected",v.Enum.ColumnPropertyNames!HeaderHAlignment,"Near")
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","sort_code",v.Enum.ColumnPropertyNames!HeaderHAlignment,"Near")
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","descr",v.Enum.ColumnPropertyNames!HeaderHAlignment,"Near")
+'visible
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","selected",v.Enum.ColumnPropertyNames!Visible,True)
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","sort_code",v.Enum.ColumnPropertyNames!Visible,True)
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","descr",v.Enum.ColumnPropertyNames!Visible,True)
+'captions
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","selected",v.Enum.ColumnPropertyNames!Caption,"Sel")
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","sort_code",v.Enum.ColumnPropertyNames!Caption,"Code")
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","descr",v.Enum.ColumnPropertyNames!Caption,"Descr")
+'column widths
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","selected",v.Enum.ColumnPropertyNames!Width,"35")
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","sort_code",v.Enum.ColumnPropertyNames!Width,"80")
+gui.Form.GsGCSortCode.SetColumnProperty("gvSorts","descr",v.Enum.ColumnPropertyNames!Width,"215")
+
+gui.Form.GsGCSortCode.MainView("gvSorts")
+
+
+f.Intrinsic.Control.catch
+f.Intrinsic.Control.CallSub(catching,"sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.formatgrids.End
+
+Program.Sub.GsGCProdLine_RowClick.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+v.Local.bCurrent.Declare
+
+F.Data.Datatable.SetValue("dtProducts",v.Args.ROWINDEX,"selected",v.DataTable.dtProducts(v.Args.ROWINDEX).SELECTED!FIELDVALNOT)
+
+
+f.Intrinsic.Control.catch
+f.Intrinsic.Control.CallSub(catching,"sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.GsGCProdLine_RowClick.End
+
+Program.Sub.GsGCSortCode_RowClick.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+f.Data.Datatable.SetValue("dtSorts",v.Args.ROWINDEX,"selected",v.DataTable.dtSorts(v.Args.ROWINDEX).selected!fieldvalnot)
+
+f.Intrinsic.Control.catch
+f.Intrinsic.Control.CallSub(catching,"sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.GsGCSortCode_RowClick.End
+
+Program.Sub.GsGCAltPrice_RowClick.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+
+f.Data.Datatable.SetValue("dtPriceCode",v.Args.ROWINDEX,"selected",v.DataTable.dtPriceCode(v.Args.ROWINDEX).SELECTED!FIELDVALNOT)
+
+f.Intrinsic.Control.catch
+f.Intrinsic.Control.CallSub(catching,"sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.GsGCAltPrice_RowClick.End
+
+Program.Sub.chkProdLines_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+'set the "selected" value of every row in the table
+F.Intrinsic.Control.If(V.Screen.Form!chkProdLines.CheckedAsBoolean,=,True)
+	f.Data.Datatable.SetValue("dtProducts",-1,"selected",1)
+f.Intrinsic.Control.Else
+	f.Data.Datatable.SetValue("dtProducts",-1,"selected",0)
+F.Intrinsic.Control.EndIf
+
+f.Intrinsic.Control.catch
+f.Intrinsic.Control.CallSub(catching,"sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.chkProdLines_Click.End
+
+Program.Sub.chkSortCodes_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+'set the "selected" value of every row in the table
+f.Intrinsic.Control.If(v.Screen.Form!chkSortCodes.CheckedAsBoolean,=,True)
+	f.Data.Datatable.SetValue("dtSorts",-1,"selected",1)
+f.Intrinsic.Control.Else
+	f.Data.Datatable.SetValue("dtSorts",-1,"selected",0)
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.Control.catch
+f.Intrinsic.Control.CallSub(catching,"sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.chkSortCodes_Click.End
+
+Program.Sub.chkAltPrices_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+'set the "selected" value of every row in the table
+f.Intrinsic.Control.If(v.Screen.Form!chkAltPrices.CheckedAsBoolean,=,True)
+	f.Data.Datatable.SetValue("dtPriceCode",-1,"selected",1)
+f.Intrinsic.Control.Else
+	f.Data.Datatable.SetValue("dtPriceCode",-1,"selected",0)
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.Control.catch
+f.Intrinsic.Control.CallSub(catching,"sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.chkAltPrices_Click.End
+
+Program.Sub.lbl4_Click.Start
+'f.Intrinsic.Control.If(v.Args.BUTTON.UCase,=,"RIGHT")
+'	Function.Intrinsic.Debug.InvokeDebugger
+'	Function.Intrinsic.Debug.Stop
+'f.Intrinsic.Control.EndIf
+Program.Sub.lbl4_Click.End
+
+Program.Sub.cmdPost_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+v.Local.sSql.Declare
+v.Local.sProductLines.Declare
+v.Local.sSortCodes.Declare
+v.Local.fPercent.Declare
+v.Local.sAltPrices.Declare
+v.Local.iCount.Declare
+v.Local.sTime.Declare
+v.Local.sDate.Declare
+
+
+f.Intrinsic.UI.InvokeWaitDialog("Building Queries to Update List Price","Please Wait")
+
+f.Intrinsic.Control.If(v.Screen.Form!txtPercent.Text,=,"")
+	f.Intrinsic.UI.Msgbox("Percent Increase Not Set","Markup Error")
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.Else
+	f.Intrinsic.Math.Div(v.Screen.Form!txtPercent.Text,100,v.Local.fPercent)
+f.Intrinsic.Control.EndIf
+'set filters on all views based on the "selected" column
+f.Data.DataView.SetFilter("dtProducts","dvProducts","selected = True")
+f.Data.DataView.SetFilter("dtSorts","dvSorts","selected = True")
+f.Data.DataView.SetFilter("dtPriceCode","dvPriceCode","selected = True")
+
+f.Intrinsic.Control.If(v.DataView.dtProducts!dvProducts.rowcount,>,"0")
+	f.Intrinsic.Control.For(v.Local.iCount,0,v.DataView.dtProducts!dvProducts.rowcount--,1)
+		f.Intrinsic.Control.If(v.Local.iCount,=,0)
+			f.Intrinsic.String.Build("'{0}'",v.DataView.dtProducts!dvProducts(v.Local.iCount).product_line!fieldvaltrim,v.Local.sProductLines)
+		f.Intrinsic.Control.Else	
+			f.Intrinsic.String.Build("{0},'{1}'",v.Local.sProductLines,v.DataView.dtProducts!dvProducts(v.Local.iCount).product_line!fieldvaltrim,v.Local.sProductLines)
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.Next(v.Local.iCount)
+	f.Intrinsic.String.Build("({0})",v.Local.sProductLines,v.Local.sProductLines)
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.Control.If(v.DataView.dtSorts!dvSorts.RowCount,>,"0")
+	f.Intrinsic.Control.For(v.Local.iCount,0,v.DataView.dtSorts!dvSorts.RowCount--,1)
+		f.Intrinsic.Control.If(v.Local.iCount,=,0)
+			f.Intrinsic.String.Build("'{0}'",v.DataView.dtSorts!dvSorts(v.Local.iCount).sort_code!fieldvaltrim,v.Local.sSortCodes)
+		f.Intrinsic.Control.Else
+			f.Intrinsic.String.Build("{0},'{1}'",v.Local.sSortCodes,v.DataView.dtSorts!dvSorts(v.Local.iCount).sort_code!fieldvaltrim,v.Local.sSortCodes)
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.Next(v.Local.iCount)
+	f.Intrinsic.String.Build("({0})",v.Local.sSortCodes,v.Local.sSortCodes)
+f.Intrinsic.Control.EndIf
+
+'update the inventory_mstr.price here because we don't need the alt_prices to do that
+v.Local.sSql.Set("update inventory_mstr set inventory_mstr.amt_price = ")
+f.Intrinsic.String.Build("{0}inventory_mstr.amt_price + (inventory_mstr.amt_price * {1})",v.Local.sSql,v.Local.fPercent,v.Local.sSql)
+
+f.Intrinsic.Control.If(v.Local.sProductLines.Length,>,0,AND,v.Local.sSortCodes.Length,>,0)
+	'both product_line and sort_code are included in the query criteria
+	f.Intrinsic.String.Build("{0} where inventory_mstr.product_line in {1} and inventory_mstr.code_sort in {2}",v.Local.sSql,v.Local.sProductLines,v.Local.sSortCodes,v.Local.sSql)
+f.Intrinsic.Control.ElseIf(v.Local.sProductLines.Length,>,0,AND,v.Local.sSortCodes.Length,=,0)
+	'just product_line is included in the query criteria
+	f.Intrinsic.String.Build("{0} where inventory_mstr.product_line in {1}",v.Local.sSql,v.Local.sProductLines,v.Local.sSql)
+f.Intrinsic.Control.ElseIf(v.Local.sProductLines.Length,=,0,AND,V.Local.sSortCodes.Length,>,0)
+	'just the sort_code is included in the query criteria
+	f.Intrinsic.String.Build("{0} where inventory_mstr.code_sort in {1}",v.Local.sSql,v.Local.sSortCodes,v.Local.sSql)
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.UI.ChangeWaitStatus("Updating the list price for the selected items")
+f.ODBC.Connection!con.opencompanyconnection
+	f.ODBC.Connection!con.Execute(v.Local.sSql)
+f.ODBC.Connection!con.Close
+
+
+
+v.Local.sSql.Set("")
+
+f.Intrinsic.Control.If(v.DataView.dtPriceCode!dvPriceCode.RowCount,>,0)
+	f.Intrinsic.UI.ChangeWaitStatus("Building Queries to update Alt Prices")
+	f.Intrinsic.Control.For(v.Local.iCount,0,v.DataView.dtPriceCode!dvPriceCode.RowCount--,1)
+		f.Intrinsic.Control.If(v.Local.iCount,=,0)
+			f.Intrinsic.String.Build("set inv_alt_price.alt_price_{0} = inv_alt_price.alt_price_{0} + (inv_alt_price.alt_price_{0} * {1})",v.DataView.dtPriceCode!dvPriceCode(v.Local.iCount).keyfld!fieldvallong,v.Local.fPercent,v.Local.sSql)
+		f.Intrinsic.Control.Else
+			f.Intrinsic.String.Build("{0}, inv_alt_price.alt_price_{1} = inv_alt_price.alt_price_{1} + (inv_alt_price.alt_price_{1} * {2})",v.Local.sSql,v.DataView.dtPriceCode!dvPriceCode(v.Local.iCount).keyfld!fieldvallong,v.Local.fPercent,v.Local.sSql)
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.Next(v.Local.iCount)
+	
+	
+	'we're updating alt-prices so we'll update the date_chg, time_chg, user_chg, and program.
+	f.Intrinsic.String.Format(v.Ambient.Time,"hhnnss",v.Local.sTime)
+	f.Intrinsic.String.Format(v.Ambient.Date.PSQLFriendly,"yyyymmdd",v.Local.sDate)
+	F.Intrinsic.String.RPad(V.Local.sTime,"0",8,v.Local.sTime)
+	f.Intrinsic.String.Build("{0}, date_last_chg = '{1}', time_last_chg = '{2}', last_chg_by = '{3}', last_chg_pgm = 'ARC3020'",v.Local.sSql,v.Local.sDate,v.Local.sTime,v.Caller.User,v.Local.sSql)
+	
+	f.Intrinsic.String.Build("update inv_alt_price {0} from inv_alt_price inner join inventory_mstr on inv_alt_price.part = inventory_mstr.part and inv_alt_price.locn = inventory_mstr.location",v.Local.sSql,v.Local.sSql)
+	
+	f.Intrinsic.Control.If(v.Local.sProductLines.Length,>,0,AND,V.Local.sSortCodes.Length,>,0)
+		f.Intrinsic.String.Build("{0} where inventory_mstr.product_line in {1} and inventory_mstr.code_sort in {2}",v.Local.sSql,v.Local.sProductLines,v.Local.sSortCodes,v.Local.sSql)
+	f.Intrinsic.Control.ElseIf(v.Local.sProductLines.Length,>,0,AND,v.Local.sSortCodes.Length,=,0)
+		f.Intrinsic.String.Build("{0} where inventory_mstr.product_line in {1}",v.Local.sSql,v.Local.sProductLines,v.Local.sSql)
+	f.Intrinsic.Control.ElseIf(v.Local.sProductLines.Length,=,0,AND,V.Local.sSortCodes.Length,>,0)
+		F.Intrinsic.String.Build("{0} where inventory_mstr.code_sort in {1}",v.Local.sSql,v.Local.sSortCodes,v.Local.sSql)
+	f.Intrinsic.Control.EndIf
+	
+	'update the wait status
+	f.Intrinsic.UI.ChangeWaitStatus("Updating the selected Alt Prices")
+	'execute the query
+	f.ODBC.Connection!con.opencompanyconnection
+		f.ODBC.Connection!con.Execute(v.Local.sSql)
+	f.ODBC.Connection!con.Close
+
+	
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.UI.CloseWaitDialog
+
+f.Intrinsic.Control.catch
+f.Intrinsic.Control.CallSub(catching,"sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+
+Program.Sub.cmdPost_Click.End
+Program.Sub.cmdHelp_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sError.Declare
+v.Local.sText.Declare
+
+v.Local.sText.Set("SELECTING PRODUCT LINES AND SORT CODES")
+V.Local.sText.Append(v.Ambient.NewLine)
+v.Local.sText.Append("The selections are an 'AND' criteria, meaning the part must exist in one of the product lines selected AND one of the sort codes selected.  If you only select product lines, then sort codes are not considered.  If you only select sort codes, then product lines are not considered. Here are some examples selecting FG as the product line, and COPPER as the sort code")
+v.Local.sText.Append(v.Ambient.NewLine)
+v.Local.sText.Append("Part 123, Product Line 'FG' and sort code 'COPPER' will be updated")
+v.Local.sText.Append(v.Ambient.NewLine)
+v.Local.sText.Append("Part 124, Product Line 'FG' and sort code 'STEEL' will NOT be updated because the sort code is not 'COPPER'")
+v.Local.sText.Append(v.Ambient.NewLine)
+v.Local.sText.Append("Part 125, Product Line 'RM' and sort code 'COPPER' will NOT be updated because the product line is not 'FG'")
+v.Local.sText.Append(v.Ambient.NewLine)
+v.Local.sText.Append("If you only select the product line 'FG' with no sort code, then both parts 123, and 124 will be updated")
+v.Local.sText.Append(v.Ambient.NewLine)
+v.Local.sText.Append("Similarly if you only select the sort code 'COPPER' with no Product Line, then parts 123 and 125 will be updated")
+v.Local.sText.Append(v.Ambient.NewLine)
+v.Local.sText.Append("SELECTING ALT PRICES")
+V.Local.sText.Append(V.Ambient.NewLine)
+V.Local.sText.Append("This gridview will only show the alt price codes that you have defined in company options.  If you wish to use another, simply define the code in System Support > Administration > Company Options Standard >> Order Entry Table Maintenance > Inventory Alternate Price Codes.  When the gridview is populated, it's looking for the 'Code' to be populated.")
+v.Local.sText.Append(v.Ambient.NewLine)
+v.Local.sText.Append("PERCENT MARKUP")
+V.Local.sText.Append(V.Ambient.NewLine)
+V.Local.sText.Append("Entering the percent it automatically converts the number to the proper decimal value. ie:  2.5 is converted to .025.  Entering a negative number will decrease the price using the following formula:  price + (price * -percent).  An example would be...")
+v.Local.sText.Append("If our current price is $5.00, and the percent entered in to the field is -5, then the formula would look like this:")
+v.Local.sText.Append("5 + (5 * -.05) = 4.75")
+v.Local.sText.Append(v.Ambient.NewLine)
+v.Local.sText.Append("EXECUTE THE UPDATE")
+V.Local.sText.Append(V.Ambient.NewLine)
+V.Local.sText.Append("The script will ALWAYS update the list price on the inventory master.  Once that is done, it will only update the Alt Prices that are selected.  Along with updating the Alt Prices, it also updates the following fields in the INV_ALT_PRICE table:  Date_Last_Chg, Time_Last_Chg, Last_Chg_By, and Last_Chg_Pgm.  Last_Chg_By is the user that posted the change, and Last_Chg_Pgm will be listed as 'ARC3020'")
+
+f.Intrinsic.UI.MsgBoxExt("Program Help",v.Local.sText,1,600,600)
+
+f.Intrinsic.Control.catch
+f.Intrinsic.Control.CallSub(catching,"sub",v.Ambient.CurrentSubroutine,"errorno",v.Ambient.ErrorNumber,"errordesc",v.Ambient.ErrorDescription)
+f.Intrinsic.Control.EndTry
+Program.Sub.cmdHelp_Click.End
+
+Program.Sub.Comments.Start
+${$5$}$3.0.0.0$}$1
+${$6$}$dfinch$}$20211121112424579$}$2O16bu3pcn8yPLUxA6F2Klx+ibLK1MdjKxgCFYOLziTUYgtJK5G4DHKvqt0hHPKoPMzaX76vQnw=
+Program.Sub.Comments.End
